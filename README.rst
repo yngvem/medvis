@@ -4,11 +4,19 @@ MedVis
 
 Tools to visualise medical images.
 
+------------
+Installation
+------------
+
 To install, run
 
 .. code::
 
     pip install medvis
+
+-------
+Example
+-------
 
 The following example will plot a PET/CT image with alpha blended PET signal ontop
 of a grayscale CT image. The outline of two masks are shown with a legend that specifies
