@@ -7,7 +7,27 @@ __author__ = "Yngve Mardal Moe"
 import matplotlib.cm as cm
 import numpy as np
 
-__all__ = ["apply_cmap_with_blend"]
+__all__ = ["apply_cmap_with_blend", "apply_windowing"]
+
+
+def apply_windowing(data, center, width):
+    """Apply a windowing operation on the input data.
+
+    Clips the data to have a dynamic range between 
+    ``center - 0.5*width`` and ``center + 0.5*width``.
+
+    Arguments
+    ---------
+    data : np.ndarray
+        Imaging data to clip the dynamic range of
+    center : numeric
+        The window center
+    width : numeric
+        The window width
+    """
+    min_ = center - width/2
+    max_ = center + width/2
+    return np.minimum(np.maximum(data, min_), max_)
 
 
 def apply_cmap_with_blend(functional_data, cmap, vmin=None, vmax=None, gamma=1):
